@@ -51,9 +51,6 @@ function Index() {
   const stageRef = useRef<HTMLElement>(null);
   
   // Animation refs
-  const heroCatBoxRef = useRef<HTMLDivElement>(null);
-  const sharkBoxRef = useRef<HTMLDivElement>(null);
-  const travelingCatRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -84,73 +81,6 @@ function Index() {
         ease: "power2.out",
       });
 
-      // TRAVELING CAT HANDOFF ANIMATION
-      const setupFlight = () => {
-        if (!travelingCatRef.current || !sharkBoxRef.current || !heroCatBoxRef.current) return;
-
-        // Reset any existing scroll triggers/tweens for resize events
-        ScrollTrigger.getAll().filter(st => st.vars.id === "catFlight1" || st.vars.id === "catFlight2").forEach(st => st.kill());
-        gsap.set(travelingCatRef.current, { clearProps: "all" });
-
-        const getOffset = (el: HTMLElement) => {
-          const rect = el.getBoundingClientRect();
-          return {
-            top: rect.top + window.scrollY,
-            left: rect.left + window.scrollX,
-            width: rect.width,
-            height: rect.height
-          };
-        };
-
-        const heroRect = getOffset(heroCatBoxRef.current);
-        const sharkRect = getOffset(sharkBoxRef.current);
-
-        // Calculate translation needed to move exactly into the shark box
-        const deltaX = sharkRect.left - heroRect.left;
-        const deltaY = sharkRect.top - heroRect.top;
-        const scale = sharkRect.width / heroRect.width;
-
-        // Phase 1: Travel from Hero to About (Shark Box)
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            id: "catFlight1",
-            trigger: "#about",
-            start: "top bottom",
-            end: "center center",
-            scrub: 1,
-          }
-        });
-
-        tl.to(travelingCatRef.current, {
-          x: deltaX,
-          y: deltaY,
-          scaleX: scale,
-          scaleY: scale,
-          rotationZ: -10, // slight tilt while flying
-          ease: "power1.inOut"
-        });
-
-        // Phase 2: Continue downward as the user scrolls past the About section
-        const tl2 = gsap.timeline({
-          scrollTrigger: {
-            id: "catFlight2",
-            trigger: "#about",
-            start: "center center",
-            end: "bottom top",
-            scrub: 1,
-          }
-        });
-
-        tl2.to(travelingCatRef.current, {
-          y: deltaY + 800, // Travel off-screen downwards
-          rotationZ: 10,
-          ease: "none"
-        });
-      };
-
-      // Ensure fonts/images are loaded before calculating rects
-      setTimeout(setupFlight, 200);
-      window.addEventListener('resize', setupFlight);
 
       // Day cards rise in
       gsap.from(".day-card", {
@@ -162,7 +92,6 @@ function Index() {
         scrollTrigger: { trigger: ".schedule-grid", start: "top 80%" },
       });
 
-      return () => window.removeEventListener('resize', setupFlight);
     });
 
     return () => ctx.revert();
@@ -254,17 +183,13 @@ function Index() {
               <div className="relative w-full max-w-[300px]">
                 <div className="absolute -inset-3 bg-[var(--ink)]" />
                 <div 
-                  ref={heroCatBoxRef}
                   className="relative bg-[var(--sky)] nb-border p-4 nb-shadow flex items-center justify-center min-h-[350px]"
                 >
-                  {/* The Traveling Cat starts inside this container but uses absolute positioning */}
                   <img
-                    ref={travelingCatRef}
                     src={mascotCat}
                     alt="Cool cat mascot"
-                    className="absolute z-50 w-44 md:w-56 h-auto origin-top-left"
+                    className="w-44 md:w-56 h-auto"
                   />
-                  {/* We don't render a static cat here because the traveling cat acts as the static one initially! */}
                 </div>
               </div>
             </div>
@@ -331,11 +256,11 @@ function Index() {
               <span className="absolute top-3 left-3 font-mono text-[10px] uppercase tracking-widest font-bold">
                 // crew.left
               </span>
-              <div ref={sharkBoxRef} className="flex items-center justify-center min-h-[300px] w-full">
+              <div className="flex items-center justify-center min-h-[300px] w-full">
                 <img
                   src={mascotShark}
                   alt="Shark mascot"
-                  className="static-shark w-44 md:w-56 h-auto transition-opacity duration-150"
+                  className="w-44 md:w-56 h-auto"
                 />
               </div>
             </div>
