@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import mascotFavicon from "@/assets/mascot.png";
 
 function NotFoundComponent() {
   return (
@@ -72,7 +73,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Local Hack Week — A 90s Anime Coding Adventure" },
+      { title: "Local Hack Week" },
       { name: "description", content: "A free week-long hackathon for devs, designers, and innovators. Learn, build, and connect." },
       { property: "og:title", content: "Local Hack Week" },
       { property: "og:description", content: "A free week-long hackathon inspired by MLH Global Hack Week." },
@@ -80,6 +81,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      { rel: "icon", type: "image/png", href: mascotFavicon },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
