@@ -20,6 +20,9 @@ import mascotShark from "@/assets/mascot-shark.png";
 import logoLhw from "@/assets/logo-lhw.png";
 import logoFull from "@/assets/logo-full.png";
 import logoWordmark from "@/assets/logo-wordmark.png";
+import textLocal from "@/assets/Local.png";
+import textHack from "@/assets/Hack.png";
+import textWeek from "@/assets/Week.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -42,9 +45,6 @@ const tracks = [
   { icon: Handshake, label: "Collab", bg: "var(--mint)" },
 ];
 
-const WORDS = ["Local", "Hack", "Week"];
-// Blue aesthetic palette replacing the original orange
-const palette = ["var(--ink)", "var(--sky)", "var(--ink)", "var(--sky)", "var(--ink)"];
 
 function Index() {
   const heroRef = useRef<HTMLElement>(null);
@@ -54,14 +54,14 @@ function Index() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Clean GSAP "Animate Anything" style text entrance
-      gsap.from(".hero-char", {
-        y: 60,
+      // Word images entrance
+      gsap.from(".hero-word", {
+        y: 80,
         opacity: 0,
-        rotationX: -90,
-        stagger: 0.03,
-        duration: 1.0,
-        ease: "back.out(2)",
+        rotationX: -60,
+        stagger: 0.15,
+        duration: 1.2,
+        ease: "back.out(1.5)",
       });
 
       gsap.from(".hero-sub", {
@@ -119,20 +119,20 @@ function Index() {
       <section
         id="top"
         ref={heroRef}
-        className="relative overflow-hidden border-b-[3px] border-[var(--ink)] bg-[var(--sun)] min-h-[100vh]"
+        className="relative overflow-hidden border-b-[3px] border-[var(--ink)] bg-[var(--deep-blue)] text-[var(--paper)]"
       >
-        <div className="absolute inset-0 bg-dots opacity-25 pointer-events-none" />
+        <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
 
         <div className="hidden md:block absolute top-24 left-8 w-20 h-20 bg-[var(--pink)] burst nb-border" aria-hidden />
         <div className="hidden md:block absolute bottom-32 right-16 w-16 h-16 bg-[var(--sky)] burst nb-border" aria-hidden />
         <div className="hidden md:block absolute top-1/2 left-1/3 w-12 h-12 bg-[var(--mint)] burst nb-border" aria-hidden />
 
-        <div className="relative mx-auto max-w-7xl px-5 pt-14 pb-20 md:pt-20">
+        <div className="relative mx-auto max-w-7xl px-5 pt-8 pb-10 md:pt-12">
           <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
             <span className="nb-chip">
               <Star size={12} fill="currentColor" /> Hackerabad presents
             </span>
-            <img src={logoFull} alt="Local Hack Week" className="h-10 md:h-12 w-auto opacity-90" />
+            <img src={logoFull} alt="Local Hack Week" className="hidden" />
           </div>
 
           <div className="grid md:grid-cols-12 gap-8 items-center mt-4">
@@ -140,27 +140,12 @@ function Index() {
             <div className="md:col-span-7 lg:col-span-8">
               <h1
                 aria-label="Local Hack Week"
-                className="relative font-display leading-[0.9] tracking-tight
-                           text-[15vw] md:text-[10vw] lg:text-[9rem]
-                           py-6 md:py-8"
+                className="relative font-display py-2 md:py-4 flex flex-col items-start gap-3 md:gap-5"
                 style={{ perspective: 1200 }}
               >
-                {WORDS.map((word, wIdx) => (
-                  <div key={wIdx} className="flex flex-wrap items-end gap-x-[0.1em] gap-y-2 justify-start mb-2">
-                    {word.split("").map((ch, cIdx) => {
-                      const globalIdx = wIdx * 10 + cIdx;
-                      return (
-                        <span
-                          key={cIdx}
-                          className="hero-char inline-block will-change-transform"
-                          style={{ color: palette[globalIdx % palette.length], transformOrigin: "50% 50%" }}
-                        >
-                          {ch}
-                        </span>
-                      );
-                    })}
-                  </div>
-                ))}
+                <img src={textLocal} alt="Local" className="hero-word h-[12vw] md:h-[8vw] lg:h-[7rem] w-auto will-change-transform" />
+                <img src={textHack} alt="Hack" className="hero-word h-[15vw] md:h-[10vw] lg:h-[9rem] w-auto will-change-transform" />
+                <img src={textWeek} alt="Week" className="hero-word h-[12vw] md:h-[8vw] lg:h-[7rem] w-auto will-change-transform" />
               </h1>
 
               <p className="hero-sub max-w-xl text-lg md:text-xl font-medium mt-6">
@@ -179,11 +164,11 @@ function Index() {
             </div>
 
             {/* CAT CONTAINER (Side by side with text) */}
-            <div className="md:col-span-5 lg:col-span-4 flex justify-end">
-              <div className="relative w-full max-w-[300px]">
-                <div className="absolute -inset-3 bg-[var(--ink)]" />
+            <div className="md:col-span-5 lg:col-span-4 flex justify-center md:justify-end mt-4 md:mt-0">
+              <div className="relative w-[80%] max-w-[250px] md:max-w-[300px]">
+                <div className="absolute -inset-3 bg-[var(--pink)]" />
                 <div 
-                  className="relative bg-[var(--sky)] nb-border p-4 nb-shadow flex items-center justify-center min-h-[350px]"
+                  className="relative bg-[var(--sky)] nb-border p-4 nb-shadow flex items-center justify-center min-h-[250px] md:min-h-[350px]"
                 >
                   <img
                     src={mascotCat}
@@ -196,7 +181,7 @@ function Index() {
           </div>
         </div>
 
-        <div className="relative mt-12 flex flex-col">
+        <div className="relative mt-6 flex flex-col">
           {/* STRIP 1 (Pink) */}
           <div className="relative border-t-[3px] border-[var(--ink)] bg-[var(--pink)] text-[var(--paper)] overflow-hidden flex whitespace-nowrap">
             <div className="animate-marquee flex gap-8 py-3 font-mono text-xs uppercase tracking-widest font-bold">

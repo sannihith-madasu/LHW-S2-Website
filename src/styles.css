@@ -73,6 +73,7 @@
   --coral: oklch(0.7 0.22 35);                  /* coral orange */
   --mint: oklch(0.82 0.14 160);                 /* mint */
   --lilac: oklch(0.78 0.13 290);                /* lilac */
+  --deep-blue: oklch(0.25 0.1 260);             /* midnight blue */
 }
 
 .dark { color-scheme: light; }
