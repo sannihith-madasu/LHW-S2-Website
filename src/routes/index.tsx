@@ -127,53 +127,52 @@ function Index() {
         <div className="hidden md:block absolute bottom-32 right-16 w-16 h-16 bg-[var(--sky)] burst nb-border" aria-hidden />
         <div className="hidden md:block absolute top-1/2 left-1/3 w-12 h-12 bg-[var(--mint)] burst nb-border" aria-hidden />
 
-        <div className="relative mx-auto max-w-7xl px-5 pt-8 pb-10 md:pt-12">
-          <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
+        <div className="relative mx-auto max-w-7xl px-5 pt-6 pb-6 md:pt-12 md:pb-10">
+          <div className="flex items-center justify-center md:justify-between mb-4 md:mb-8 flex-wrap gap-4">
             <span className="nb-chip">
               <Star size={12} fill="currentColor" /> Hackerabad presents
             </span>
-            <img src={logoFull} alt="Local Hack Week" className="hidden" />
           </div>
 
-          <div className="grid md:grid-cols-12 gap-8 items-center mt-4">
+          <div className="grid md:grid-cols-12 gap-4 md:gap-8 items-center">
             {/* TEXT COLUMN */}
             <div className="md:col-span-7 lg:col-span-8">
               <h1
                 aria-label="Local Hack Week"
-                className="relative font-display py-2 md:py-4 flex flex-col items-start gap-3 md:gap-5"
+                className="relative font-display py-1 md:py-4 flex flex-col items-center md:items-start gap-1 md:gap-5"
                 style={{ perspective: 1200 }}
               >
-                <img src={textLocal} alt="Local" className="hero-word h-[12vw] md:h-[8vw] lg:h-[7rem] w-auto will-change-transform" />
-                <img src={textHack} alt="Hack" className="hero-word h-[15vw] md:h-[10vw] lg:h-[9rem] w-auto will-change-transform" />
-                <img src={textWeek} alt="Week" className="hero-word h-[12vw] md:h-[8vw] lg:h-[7rem] w-auto will-change-transform" />
+                <img src={textLocal} alt="Local" className="hero-word h-[10vw] md:h-[8vw] lg:h-[7rem] w-auto will-change-transform" />
+                <img src={textHack} alt="Hack" className="hero-word h-[12vw] md:h-[10vw] lg:h-[9rem] w-auto will-change-transform" />
+                <img src={textWeek} alt="Week" className="hero-word h-[10vw] md:h-[8vw] lg:h-[7rem] w-auto will-change-transform" />
               </h1>
 
-              <p className="hero-sub max-w-xl text-lg md:text-xl font-medium mt-6">
+              <p className="hero-sub max-w-xl text-sm md:text-xl font-medium mt-3 md:mt-6 text-center md:text-left">
                 A week-long coding adventure for devs, designers &amp; dreamers.
                 Free for everyone, everywhere.
               </p>
 
-              <div className="mt-8 flex flex-wrap gap-4">
-                <a href="#join" className="hero-cta nb-btn nb-btn-pink">
-                  Join the Adventure <ArrowRight size={18} />
+              <div className="mt-4 md:mt-8 flex flex-wrap gap-3 md:gap-4 justify-center md:justify-start">
+                <a href="#join" className="hero-cta nb-btn nb-btn-pink !text-xs md:!text-sm !py-2 !px-4 md:!py-3 md:!px-6">
+                  Join the Adventure <ArrowRight size={16} />
                 </a>
-                <a href="#schedule" className="hero-cta nb-btn nb-btn-sky">
+                <a href="#schedule" className="hero-cta nb-btn nb-btn-sky !text-xs md:!text-sm !py-2 !px-4 md:!py-3 md:!px-6">
                   View Schedule
                 </a>
               </div>
             </div>
 
-            {/* CAT CONTAINER (Side by side with text) */}
-            <div className="md:col-span-5 lg:col-span-4 flex justify-center md:justify-end mt-4 md:mt-0">
-              <div className="relative w-[80%] max-w-[250px] md:max-w-[300px]">
+            {/* CAT CONTAINER — hidden on mobile to keep hero compact */}
+            <div className="hidden md:flex md:col-span-5 lg:col-span-4 justify-end">
+              <div className="relative w-full max-w-[300px]">
                 <div className="absolute -inset-3 bg-[var(--pink)]" />
                 <div 
-                  className="relative bg-[var(--sky)] nb-border p-4 nb-shadow flex items-center justify-center min-h-[250px] md:min-h-[350px]"
+                  className="relative bg-[var(--sky)] nb-border p-4 nb-shadow flex items-center justify-center min-h-[350px]"
                 >
                   <img
                     src={mascotCat}
                     alt="Cool cat mascot"
-                    className="w-44 md:w-56 h-auto"
+                    className="w-56 h-auto"
                   />
                 </div>
               </div>
