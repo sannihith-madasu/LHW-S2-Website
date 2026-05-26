@@ -19,6 +19,7 @@ import mascotAi from "@/assets/mascot-ai.png";
 import mascotShark from "@/assets/mascot-shark.png";
 import logoLhw from "@/assets/logo-lhw.png";
 import logoFull from "@/assets/logo-full.png";
+import logoWordmark from "@/assets/logo-wordmark.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -33,7 +34,6 @@ const days = [
   { n: 4, day: "THU", title: "Game Dev Day", topic: "Pixels, sprites & sound", color: "var(--mint)" },
   { n: 5, day: "FRI", title: "Open Source Day", topic: "Your first PR", color: "var(--lilac)" },
   { n: 6, day: "SAT", title: "Project Showcase", topic: "Demo what you built", color: "var(--coral)" },
-  { n: 7, day: "SUN", title: "Closing + Awards", topic: "Prizes & celebration", color: "var(--sun)" },
 ];
 
 const tracks = [
@@ -118,14 +118,6 @@ function Index() {
             start: "top bottom",
             end: "center center",
             scrub: 1,
-            onUpdate: (self) => {
-              // Hide the static shark exactly as the cat arrives (progress close to 1)
-              if (self.progress > 0.95) {
-                gsap.set(".static-shark", { opacity: 0 });
-              } else {
-                gsap.set(".static-shark", { opacity: 1 });
-              }
-            }
           }
         });
 
@@ -279,14 +271,34 @@ function Index() {
           </div>
         </div>
 
-        <div className="relative border-t-[3px] border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)] mt-12">
-          <div className="mx-auto max-w-7xl px-5 py-3 flex flex-wrap items-center justify-between gap-4 font-mono text-xs uppercase tracking-widest font-bold">
-            <span>★ Code</span>
-            <span>★ Create</span>
-            <span>★ Collaborate</span>
-            <span>★ Level Up</span>
-            <span>★ Ship It</span>
-            <span>★ Win Prizes</span>
+        <div className="relative mt-12 flex flex-col">
+          {/* STRIP 1 (Pink) */}
+          <div className="relative border-t-[3px] border-[var(--ink)] bg-[var(--pink)] text-[var(--paper)] overflow-hidden flex whitespace-nowrap">
+            <div className="animate-marquee flex gap-8 py-3 font-mono text-xs uppercase tracking-widest font-bold">
+              {Array.from({ length: 4 }).map((_, i) => (
+                <span key={`strip1-${i}`} className="flex gap-8 items-center">
+                  <span>✦ COLLAB</span>
+                  <span>★ FREE + OPEN TO ALL</span>
+                  <span>★ A WEEK OF HACKS</span>
+                  <span>★ HACKERABAD X AIC X ECA PRESENTS</span>
+                  <span>✦ TUNE IN LIVE</span>
+                  <span>★ LOCAL HACK WEEK</span>
+                  <span>✦ CODE</span>
+                </span>
+              ))}
+            </div>
+          </div>
+          {/* STRIP 2 (Sun) */}
+          <div className="relative border-t-[3px] border-[var(--ink)] bg-[var(--sun)] text-[var(--ink)] overflow-hidden flex whitespace-nowrap">
+            <div className="animate-marquee flex gap-12 py-3 font-display text-2xl uppercase tracking-widest" style={{ animationDirection: 'reverse' }}>
+              {Array.from({ length: 4 }).map((_, i) => (
+                <span key={`strip2-${i}`} className="flex gap-12 items-center">
+                  <span>EK ✦</span>
+                  <span>HACKERABAD X AIC X ECA PRESENTS ★</span>
+                  <span>LHW-S2 ✦</span>
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -396,7 +408,7 @@ function Index() {
               <Zap size={12} /> 03 — Schedule
             </span>
             <h2 className="font-display text-5xl md:text-7xl">
-              7 Days, <span className="bg-[var(--sun)] px-2 nb-border">7 Missions</span>
+              6 Days, <span className="bg-[var(--sun)] px-2 nb-border">6 Vibes</span>
             </h2>
             <p className="mt-5 max-w-2xl mx-auto font-medium text-lg">
               Daily live sessions. Schedules &amp; timings may change and will be updated here.
@@ -448,7 +460,9 @@ function Index() {
             <img src={mascotAi} alt="" className="w-24 h-auto" />
             <img src={mascotShark} alt="" className="w-24 h-auto" />
           </div>
-          <h2 className="font-display text-5xl md:text-7xl mb-6">Ready, Player?</h2>
+          <div className="flex justify-center mb-6">
+            <img src={logoWordmark} alt="Local Hack Week" className="h-16 md:h-24 w-auto" />
+          </div>
           <p className="text-xl mb-10 font-medium">
             Grab your keyboard. Bring your friends. Let's hack the week.
           </p>
@@ -462,7 +476,7 @@ function Index() {
       <footer className="bg-[var(--paper)] py-10">
         <div className="mx-auto max-w-7xl px-5 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2 font-mono text-xs uppercase font-bold tracking-widest">
-            <span className="inline-block w-5 h-5 bg-[var(--sun)] nb-border" />
+            <img src={logoLhw} alt="LHW" className="h-5 w-auto" />
             Local Hack Week © 2026
           </div>
           <div className="flex items-center gap-3">

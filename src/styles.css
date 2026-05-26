@@ -179,4 +179,12 @@
       5% 22%, 22% 22%, 25% 5%, 39% 12%
     );
   }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
 }
