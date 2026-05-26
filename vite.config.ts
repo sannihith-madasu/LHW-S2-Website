@@ -5,10 +5,16 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
+  base: process.env.GITHUB_ACTIONS === "true" ? "/LHW-S2-Website/" : "/",
   plugins: [
     tailwindcss(),
     tsconfigPaths(),
-    tanstackStart(),
+    tanstackStart({
+      prerender: {
+        enabled: true,
+        crawlLinks: true,
+      },
+    }),
     react(),
   ],
 });
