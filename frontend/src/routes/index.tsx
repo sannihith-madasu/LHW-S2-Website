@@ -24,6 +24,7 @@ import { CharacterIntro } from "@/components/sections/CharacterIntro";
 import { CommunityJourney } from "@/components/sections/CommunityJourney";
 import { CTASection } from "@/components/sections/CTASection";
 import { NewsletterSection } from "@/components/sections/NewsletterSection";
+import { SponsorsSection } from "@/components/sections/SponsorsSection";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -220,6 +221,9 @@ function Index() {
 
       {/* 9. Community Journey */}
       <CommunityJourney />
+
+      {/* 10. Sponsors */}
+      <SponsorsSection />
 
       {/* 11. CTA / Join */}
       <CTASection />
