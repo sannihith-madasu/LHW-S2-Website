@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 
 // Assets
-import mascotCat from "@/assets/mascot-cat.png";
 import mascotAi from "@/assets/mascot-ai.png";
 import mascotShark from "@/assets/mascot-shark.png";
 import logoLhw from "@/assets/logo-lhw.png";
@@ -23,6 +22,7 @@ import eca from "@/assets/ECA.png";
 import hackerabad from "@/assets/Hackerabad.png";
 
 // Section components
+import { HeroSection } from "@/components/sections/HeroSection";
 import { CharacterIntro } from "@/components/sections/CharacterIntro";
 import { CommunityJourney } from "@/components/sections/CommunityJourney";
 import { CTASection } from "@/components/sections/CTASection";
@@ -45,7 +45,6 @@ const navRight = [
 ];
 
 function Index() {
-  const heroRef = useRef<HTMLElement>(null);
   const navRef = useRef<HTMLElement>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -64,38 +63,18 @@ function Index() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Hero entrance
+  // Navigation entrance
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".hero-line", {
-        yPercent: 100,
-        duration: 1,
-        stagger: 0.15,
-        ease: "power4.out",
-      });
       gsap.from(".nav-anim", {
         opacity: 0,
         y: -20,
         duration: 0.8,
         stagger: 0.1,
         ease: "power2.out",
+        clearProps: "all",
       });
-      gsap.from(".hero-visual", {
-        opacity: 0,
-        scale: 0.95,
-        duration: 1,
-        delay: 0.4,
-        ease: "power3.out",
-      });
-      gsap.from(".hero-content > *", {
-        opacity: 0,
-        y: 20,
-        duration: 0.8,
-        stagger: 0.1,
-        delay: 0.5,
-        ease: "power2.out",
-      });
-    }, heroRef);
+    });
     return () => ctx.revert();
   }, []);
 
@@ -104,13 +83,13 @@ function Index() {
 
       {/* ═══ HEADER / NAV ═══ */}
       {/* Desktop Navigation */}
-      <div className="hidden md:flex nav-anim fixed top-8 left-1/2 -translate-x-1/2 z-50">
-        <a href="#top" className="flex items-center justify-center bg-[var(--ink)] text-[var(--paper)] rounded-full px-6 py-2.5 font-display text-sm uppercase tracking-widest hover:scale-105 transition-transform shadow-sm">
+      <div className="hidden md:flex fixed top-8 left-1/2 -translate-x-1/2 z-50">
+        <a href="#top" className="nav-anim flex items-center justify-center bg-[var(--ink)] text-[var(--paper)] rounded-full px-6 py-2.5 font-display text-sm uppercase tracking-widest hover:scale-105 transition-transform shadow-sm">
           LHW / S2
         </a>
       </div>
 
-      <nav className="hidden md:flex fixed top-8 right-8 z-50 flex-col items-end gap-2.5">
+      <nav className="hidden md:flex fixed top-[82px] right-8 z-50 flex-col items-end gap-2.5">
         {[
           { href: "#characters", label: "About", color: "var(--mint)" },
           { href: "#feature-explore", label: "Explore", color: "var(--sky)" },
@@ -162,40 +141,7 @@ function Index() {
       )}
 
       {/* ═══ HERO ═══ */}
-      <section
-        id="top"
-        ref={heroRef}
-        className="min-h-[100dvh] pt-32 pb-24 px-6 md:px-12 lg:px-24 flex flex-col justify-center max-w-[1800px] mx-auto bg-[var(--paper)]"
-      >
-        {/* Primary Headline */}
-        <div className="w-full mb-[clamp(40px,8vw,80px)] mt-12 md:mt-0">
-          <h1 className="font-display font-black text-[var(--ink)] text-[clamp(64px,10vw,180px)] leading-[0.88] tracking-[-0.03em] uppercase">
-            <div className="overflow-hidden"><span className="block hero-line">Local</span></div>
-            <div className="overflow-hidden"><span className="block hero-line">Hack</span></div>
-            <div className="overflow-hidden"><span className="block hero-line">Week</span></div>
-          </h1>
-        </div>
-
-        {/* Supporting Content Area */}
-        <div className="grid grid-cols-1 md:grid-cols-[auto_1fr] gap-8 md:gap-16 lg:gap-24 items-start w-full">
-          {/* Visual Asset */}
-          <div className="hero-visual w-full max-w-[280px] md:w-[320px] aspect-[3/4] rounded-[16px] bg-[var(--mint)] overflow-hidden relative border-2 border-[var(--ink)]">
-            <img src={mascotCat} alt="Mascot" className="absolute bottom-0 w-full h-[110%] object-contain object-bottom p-4 filter drop-shadow-md" />
-          </div>
-
-          {/* Content Block */}
-          <div className="hero-content flex flex-col justify-center max-w-[520px] pt-4 md:pt-10">
-            <p className="text-[var(--ink)] text-[clamp(17px,2vw,22px)] font-medium leading-relaxed mb-[32px]">
-              A free, week-long creative consultancy for developers. We are bringing together designers and creators to build the future, learn new skills, and launch incredible projects.
-            </p>
-            <div>
-              <a href="#join" className="inline-flex items-center justify-center gap-2 bg-[var(--ink)] text-[var(--paper)] rounded-full px-8 h-12 font-bold text-sm uppercase tracking-wider hover:bg-[var(--sun)] hover:text-[var(--ink)] transition-colors shadow-md">
-                Join the Movement <ArrowRight size={16} />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection />
 
       {/* ═══ SECTION ORDER (DESIGN.MD) ═══ */}
 
