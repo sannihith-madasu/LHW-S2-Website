@@ -620,5 +620,16 @@
     background: var(--paper);
     color: var(--teal);
   }
-}
 
+  .footer-wave {
+    height: 32px;
+    background:
+      radial-gradient(
+        circle at 20px 0,
+        transparent 20px,
+        #FF5A36 21px
+      )
+      repeat-x;
+    background-size: 40px 40px;
+  }
+}

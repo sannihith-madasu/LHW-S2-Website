@@ -18,6 +18,9 @@ import mascotAi from "@/assets/mascot-ai.png";
 import mascotShark from "@/assets/mascot-shark.png";
 import logoLhw from "@/assets/logo-lhw.png";
 import logoWordmark from "@/assets/logo-wordmark.png";
+import aic from "@/assets/aic.png";
+import eca from "@/assets/ECA.png";
+import hackerabad from "@/assets/Hackerabad.png";
 
 // Section components
 import { CharacterIntro } from "@/components/sections/CharacterIntro";
@@ -232,90 +235,101 @@ function Index() {
       <NewsletterSection />
 
       {/* ═══ FOOTER ═══ */}
-      <footer className="bg-[var(--ink)] text-[var(--paper)] border-t-[3px] border-[var(--ink)]">
-        {/* Main footer columns */}
-        <div className="mx-auto max-w-7xl px-5 py-16 grid sm:grid-cols-2 md:grid-cols-4 gap-10">
-          {/* Brand */}
-          <div className="sm:col-span-2 md:col-span-1">
-            <img src={logoWordmark} alt="Local Hack Week" className="h-12 w-auto mb-4" />
-            <p className="font-medium text-sm opacity-70 leading-relaxed max-w-xs">
-              A free week-long hackathon inspired by MLH Global Hack Week. Powered by Hackerabad, AIC &amp; ECA.
+      <footer
+        className="
+          bg-[var(--ink)]
+          text-[var(--paper)]
+          border-t-4
+          border-black
+          overflow-hidden
+        "
+      >
+        {/* CSS Wave Decorative Strip */}
+        <div
+          className="w-full border-b-2 border-white/10"
+          aria-hidden="true"
+        />
+
+        <div className="max-w-7xl mx-auto px-6 py-12">
+
+          {/* Small top message */}
+          <div className="flex justify-end mb-10">
+            <p
+              className="
+                max-w-lg
+                text-right
+                text-sm
+                md:text-base
+                font-medium
+                leading-relaxed
+                text-neutral-400
+              "
+            >
+              Six days of learning, building, shipping and meeting
+              incredible people. One week can change everything.
             </p>
-            <div className="mt-6 flex items-center gap-3">
-              <a href="#" aria-label="Instagram" className="w-10 h-10 nb-border bg-[var(--pink)] flex items-center justify-center nb-shadow-sm text-[var(--ink)]">
-                <Instagram size={18} />
+          </div>
+
+          {/* Massive Wordmark */}
+          <div className="mb-8">
+            <img
+              src={logoWordmark}
+              alt="Local Hack Week"
+              className="
+                w-full
+                max-w-[850px]
+                h-auto
+                object-contain
+                opacity-90
+              "
+            />
+          </div>
+
+          {/* Bottom utility row */}
+          <div
+            className="
+              flex
+              items-center
+              justify-between
+              border-t-2
+              border-white/10
+              pt-6
+            "
+          >
+            <span
+              className="
+                text-[11px]
+                uppercase
+                tracking-[0.25em]
+                opacity-50
+              "
+            >
+              Local Hack Week © 2026
+            </span>
+
+            <div
+              className="
+                flex
+                items-center
+                gap-5
+                text-sm
+                font-medium
+              "
+            >
+              <a href="#schedule" className="hover:text-[#FFC900] transition-colors">
+                Schedule
               </a>
-              <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube"
-                className="w-10 h-10 nb-border bg-[var(--coral)] flex items-center justify-center nb-shadow-sm text-[var(--ink)]">
-                <Youtube size={18} />
+
+              <a href="#sponsors" className="hover:text-[#FFC900] transition-colors">
+                Sponsors
               </a>
-              <a href="#" aria-label="GitHub"
-                className="w-10 h-10 nb-border bg-[var(--sky)] flex items-center justify-center nb-shadow-sm text-[var(--ink)]">
-                <Github size={18} />
+
+              <a href="#join" className="hover:text-[#FFC900] transition-colors">
+                Register
               </a>
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-mono text-xs uppercase tracking-widest font-bold mb-5 opacity-60">Quick Links</h4>
-            <ul className="space-y-3">
-              {["About", "Schedule", "Tracks", "Resources", "Community"].map((l) => (
-                <li key={l}>
-                  <a href={`#${l.toLowerCase()}`} className="font-medium text-sm opacity-80 hover:opacity-100 hover:underline decoration-[2px] underline-offset-3">
-                    {l}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Community */}
-          <div>
-            <h4 className="font-mono text-xs uppercase tracking-widest font-bold mb-5 opacity-60">Community</h4>
-            <ul className="space-y-3">
-              {["Discord", "YouTube", "GitHub", "Newsletter", "Hackerabad"].map((l) => (
-                <li key={l}>
-                  <a href="#" className="font-medium text-sm opacity-80 hover:opacity-100 hover:underline decoration-[2px] underline-offset-3">
-                    {l}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h4 className="font-mono text-xs uppercase tracking-widest font-bold mb-5 opacity-60">Company</h4>
-            <ul className="space-y-3">
-              {["About Hackerabad", "AIC", "ECA", "Contact Us", "Privacy Policy"].map((l) => (
-                <li key={l}>
-                  <a href="#" className="font-medium text-sm opacity-80 hover:opacity-100 hover:underline decoration-[2px] underline-offset-3">
-                    {l}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* Bottom bar */}
-        <div className="border-t-[2px] border-[var(--paper)] border-opacity-10 mx-5">
-          <div className="mx-auto max-w-7xl py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-4 font-mono text-xs uppercase font-bold tracking-widest opacity-60">
-              <span>Local Hack Week © 2026</span>
-              <span>·</span>
-              <a href="#" className="hover:opacity-100">Privacy</a>
-              <span>·</span>
-              <a href="#" className="hover:opacity-100">Terms</a>
-            </div>
-            {/* Mini mascot icons */}
-            <div className="flex items-center gap-2">
-              <img src={mascotCat} alt="Cat" className="w-7 h-auto opacity-60 hover:opacity-100 transition-opacity" />
-              <img src={mascotAi} alt="Robot" className="w-7 h-auto opacity-60 hover:opacity-100 transition-opacity" />
-              <img src={mascotShark} alt="Shark" className="w-7 h-auto opacity-60 hover:opacity-100 transition-opacity" />
-            </div>
-          </div>
         </div>
       </footer>
     </div>
