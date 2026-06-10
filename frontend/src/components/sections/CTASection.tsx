@@ -11,73 +11,239 @@ export function CTASection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".cta-content", {
-        y: 40, opacity: 0, duration: 0.9, ease: "power3.out",
-        scrollTrigger: { trigger: ".cta-content", start: "top 80%" },
+      gsap.from(".cta-eyebrow", {
+        y: 20,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
       });
+
+      gsap.from(".cta-title", {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      });
+
+      gsap.from(".cta-actions", {
+        y: 30,
+        opacity: 0,
+        delay: 0.15,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      });
+
       gsap.from(".cta-shark", {
-        x: 60, opacity: 0, duration: 0.9, delay: 0.2, ease: "back.out(1.3)",
-        scrollTrigger: { trigger: ".cta-content", start: "top 80%" },
+        scale: 0.8,
+        opacity: 0,
+        rotate: -8,
+        duration: 1,
+        ease: "back.out(1.4)",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      });
+
+      gsap.to(".cta-shark", {
+        y: -15,
+        duration: 2.8,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+      });
+
+      gsap.from(".cta-stat", {
+        opacity: 0,
+        y: 20,
+        stagger: 0.1,
+        duration: 0.6,
+        scrollTrigger: {
+          trigger: ".cta-stats",
+          start: "top 90%",
+        },
       });
     }, sectionRef);
+
     return () => ctx.revert();
   }, []);
 
   return (
-    <section id="join" ref={sectionRef} className="relative border-b-[3px] border-[var(--ink)] bg-[var(--ink)] text-[var(--paper)] overflow-hidden">
-      <div className="absolute inset-0 bg-grid opacity-10 pointer-events-none" />
+    <section
+      id="join"
+      ref={sectionRef}
+      className="
+        relative
+        overflow-hidden
+        bg-[var(--ink)]
+        text-[var(--paper)]
+        border-b-[3px]
+        border-[var(--ink)]
+      "
+    >
+      <div className="max-w-7xl mx-auto px-6 py-28 md:py-36">
 
-      <div className="relative mx-auto max-w-7xl px-5 py-section">
-        <div className="cta-content grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-          {/* Text */}
-          <div>
-            <span className="nb-chip mb-6" style={{ background: "var(--sun)", borderColor: "var(--sun)", color: "var(--ink)" }}>
-              🚀 Season 2 is here
-            </span>
-            <h2 className="font-display text-5xl md:text-7xl leading-none mb-6">
-              Ready to{" "}
-              <span className="bg-[var(--pink)] px-3 nb-border inline-block text-[var(--ink)]">hack</span>
+        <div className="grid md:grid-cols-12 gap-10 items-center">
+
+          {/* Content */}
+          <div className="md:col-span-7">
+
+            <div className="cta-eyebrow mb-8">
+              <span
+                className="
+                  font-mono
+                  text-xs
+                  uppercase
+                  tracking-[0.35em]
+                  text-[var(--sun)]
+                "
+              >
+                SEASON 2 IS LIVE
+              </span>
+            </div>
+
+            <h2
+              className="
+                cta-title
+                font-display
+                text-[clamp(4rem,10vw,9rem)]
+                leading-[0.85]
+                tracking-[-0.06em]
+                mb-8
+              "
+            >
+              READY
               <br />
-              the week?
+              TO BUILD?
             </h2>
-            <p className="text-xl font-medium mb-8 opacity-80 max-w-md leading-relaxed">
-              Grab your keyboard. Bring your friends. Whether you're an Explorer, Builder, or Leader — there's a spot for you.
+
+            <p className="max-w-lg text-lg md:text-xl opacity-75 mb-10">
+              Six days of workshops, projects, collaboration,
+              and late-night ideas becoming real things.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <a href="#" id="cta-register" className="nb-btn nb-btn-pink text-[var(--ink)]">
-                Register for Free <ArrowRight size={18} />
+
+            <div className="cta-actions flex flex-wrap gap-4">
+
+              <a
+                href="#"
+                className="
+                  bg-[var(--sun)]
+                  text-black
+                  border-[3px]
+                  border-[var(--sun)]
+                  px-8
+                  py-4
+                  font-display
+                  uppercase
+                  flex
+                  items-center
+                  gap-2
+                  transition-all
+                  hover:-translate-y-1
+                "
+              >
+                Register Free
+                <ArrowRight size={18} />
               </a>
-              <a href="#schedule" className="nb-btn nb-btn-outline border-[var(--paper)] text-[var(--paper)] hover:bg-[var(--paper)] hover:text-[var(--ink)]">
-                View Schedule <ExternalLink size={16} />
+
+              <a
+                href="#schedule"
+                className="
+                  border-[3px]
+                  border-[var(--paper)]
+                  px-8
+                  py-4
+                  font-display
+                  uppercase
+                  flex
+                  items-center
+                  gap-2
+                  transition-all
+                  hover:bg-[var(--paper)]
+                  hover:text-black
+                "
+              >
+                View Schedule
+                <ExternalLink size={16} />
               </a>
+
             </div>
 
-            {/* Stat bar */}
-            <div className="mt-10 flex flex-wrap gap-6">
-              {[["100%", "Free"], ["6", "Days"], ["4", "Tracks"]].map(([val, label]) => (
-                <div key={label}>
-                  <div className="font-display text-3xl" style={{ color: "var(--sun)" }}>{val}</div>
-                  <div className="font-mono text-xs uppercase tracking-widest font-bold opacity-60">{label}</div>
-                </div>
-              ))}
-            </div>
           </div>
 
-          {/* Shark mascot */}
-          <div className="cta-shark flex items-center justify-center">
-            <div className="relative">
-              <div className="absolute -inset-6 bg-[var(--sky)] nb-border opacity-30" />
-              <div className="relative nb-border p-8 flex items-center justify-center"
-                style={{ background: "var(--sky) " }}>
-                <img src={mascotShark} alt="Shark celebrates — join us!" className="w-56 h-auto float-anim-slow" />
-              </div>
-              {/* Speech bubble */}
-              <div className="absolute -top-8 -right-4 nb-border bg-[var(--paper)] text-[var(--ink)] px-4 py-2 font-display text-sm nb-shadow-sm">
-                Let's go! 🦈
-              </div>
-            </div>
+          {/* Shark */}
+          <div className="md:col-span-5 flex justify-center md:justify-end">
+
+            <img
+              src={mascotShark}
+              alt="Shark mascot"
+              className="
+                cta-shark
+                w-[320px]
+                md:w-[480px]
+                lg:w-[560px]
+                h-auto
+                object-contain
+                select-none
+                pointer-events-none
+                translate-x-4
+              "
+            />
+
           </div>
+
         </div>
+
+        {/* Stats */}
+        <div
+          className="
+            cta-stats
+            mt-20
+            pt-10
+            border-t-2
+            border-white/15
+            flex
+            flex-wrap
+            gap-12
+          "
+        >
+          {[
+            ["100%", "FREE"],
+            ["6", "DAYS"],
+            ["4", "TRACKS"],
+          ].map(([value, label]) => (
+            <div key={label} className="cta-stat">
+              <div className="font-display text-5xl text-[var(--sun)]">
+                {value}
+              </div>
+
+              <div
+                className="
+                  mt-2
+                  text-xs
+                  uppercase
+                  tracking-[0.3em]
+                  opacity-50
+                "
+              >
+                {label}
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   );

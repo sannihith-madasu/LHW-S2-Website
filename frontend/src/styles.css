@@ -308,34 +308,79 @@
     }
   }
 
-  /* ─── Progress journey ─── */
-  .journey-step {
+  /* ─── Vertical Progress Timeline ─── */
+  .journey-timeline-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    padding: 2rem 0;
+  }
+
+  .journey-center-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    background-color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    z-index: 0;
+  }
+
+  .journey-line-text {
+    font-family: var(--font-display);
+    font-size: 13px;
+    color: var(--paper);
+    background: var(--ink);
+    padding: 6px 16px;
+    border-radius: 999px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    border: 2px solid var(--ink);
+  }
+
+  .journey-step-wrapper {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .journey-card-centered {
+    background: var(--paper);
+    border: 3px solid var(--ink);
+    box-shadow: 8px 8px 0 0 var(--ink);
+    padding: 2rem;
+    max-width: 420px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    position: relative;
-    flex: 1;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .journey-connector {
-    flex: 1;
-    height: 4px;
-    background: var(--ink);
-    margin-top: -2px;
-    position: relative;
-    top: 48px;
+  .journey-card-centered:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0 0 var(--ink);
   }
-  .journey-icon {
-    width: 96px;
-    height: 96px;
+
+  .journey-card-icon {
+    width: 128px;
+    height: 128px;
     border: 3px solid var(--ink);
-    box-shadow: 5px 5px 0 0 var(--ink);
+    box-shadow: 4px 4px 0 0 var(--ink);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.5rem;
-    position: relative;
-    z-index: 1;
+    margin-bottom: 1.5rem;
   }
 
   /* ─── Logo chip (trust section) ─── */

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowRight } from "lucide-react";
+
 import mascotCat from "@/assets/mascot-cat.png";
 import mascotAi from "@/assets/mascot-ai.png";
 import mascotShark from "@/assets/mascot-shark.png";
@@ -12,26 +12,36 @@ const steps = [
   {
     mascot: mascotCat,
     alt: "Cat — Explorer",
-    accent: "var(--pink)",
+    accent: "#FFB3EC",
     label: "Explore",
-    stage: "Stage 1",
-    description: "Show up. Pick a track. Attend your first session. Let curiosity be your guide.",
+    stage: "STAGE 1",
+    description:
+      "Show up. Pick a track. Attend your first session. Let curiosity be your guide.",
+    imageSize: "w-[220px] md:w-[260px]",
+    offset: "md:translate-y-8",
   },
   {
     mascot: mascotAi,
     alt: "Robot — Builder",
-    accent: "var(--sun)",
+    accent: "#FFC900",
     label: "Build",
-    stage: "Stage 2",
-    description: "Start building. Collaborate with teammates. Ship something real by Day 6.",
+    stage: "STAGE 2",
+    description:
+      "Start building. Collaborate with teammates. Ship something real by Day 6.",
+    imageSize: "w-[300px] md:w-[380px]",
+    offset: "",
+    featured: true,
   },
   {
     mascot: mascotShark,
     alt: "Shark — Leader",
-    accent: "var(--sky)",
+    accent: "#8DEFFF",
     label: "Lead",
-    stage: "Stage 3",
-    description: "Return as a mentor. Speak. Inspire. Champion the next generation of hackers.",
+    stage: "STAGE 3",
+    description:
+      "Return as a mentor. Speak. Inspire. Champion the next generation of hackers.",
+    imageSize: "w-[220px] md:w-[260px]",
+    offset: "md:translate-y-8",
   },
 ];
 
@@ -40,84 +50,194 @@ export function CommunityJourney() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".journey-step-item", {
-        y: 50, opacity: 0, stagger: 0.2, duration: 0.8, ease: "back.out(1.3)",
-        scrollTrigger: { trigger: ".journey-steps", start: "top 75%" },
+      const cards = gsap.utils.toArray(".journey-card");
+
+      gsap.from(".journey-header > *", {
+        y: 30,
+        opacity: 0,
+        stagger: 0.12,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
       });
-      gsap.from(".journey-connector", {
-        scaleX: 0, transformOrigin: "left center", duration: 0.6, stagger: 0.3, delay: 0.4,
-        ease: "power2.inOut",
-        scrollTrigger: { trigger: ".journey-steps", start: "top 75%" },
+
+      cards.forEach((card, index) => {
+        gsap.from(card as Element, {
+          y: 60,
+          opacity: 0,
+          duration: 0.9,
+          delay: index * 0.15,
+          ease: "back.out(1.3)",
+          scrollTrigger: {
+            trigger: card as Element,
+            start: "top 85%",
+          },
+        });
+      });
+
+      gsap.utils.toArray(".timeline-segment").forEach((segment: any) => {
+        gsap.from(segment, {
+          scaleX: 0,
+          transformOrigin: "left center",
+          duration: 1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".journey-grid",
+            start: "top 75%",
+          },
+        });
+      });
+
+      gsap.utils.toArray(".mascot").forEach((mascot: any, index) => {
+        gsap.to(mascot, {
+          y: index === 1 ? -16 : -10,
+          duration: index === 1 ? 2.2 : 2.8,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+        });
       });
     }, sectionRef);
+
     return () => ctx.revert();
   }, []);
 
   return (
-    <section id="journey" ref={sectionRef} className="border-b-[3px] border-[var(--ink)] bg-[var(--paper)] overflow-hidden">
-      <div className="mx-auto max-w-7xl px-5 py-section">
-        <div className="text-center mb-16">
-          <span className="nb-chip mb-5">🗺️ Your Journey</span>
-          <h2 className="font-display text-5xl md:text-7xl mb-4">
-            Discover →{" "}
-            <span className="bg-[var(--sun)] px-2 nb-border">Build</span>{" "}
-            → Lead
+    <section
+      ref={sectionRef}
+      className="bg-[#FDFBF7] border-b-4 border-black py-28 overflow-hidden text-black"
+    >
+      <div className="max-w-7xl mx-auto px-6">
+
+        {/* Header */}
+        <div className="journey-header text-center mb-24">
+          <div className="mb-8">
+            <span className="inline-flex items-center gap-2 border-[3px] border-black bg-white px-4 py-2 text-xs font-black tracking-widest uppercase shadow-[3px_3px_0px_#000]">
+              YOUR JOURNEY
+            </span>
+          </div>
+
+          <h2 className="font-display font-black tracking-[-0.06em] leading-[0.9] text-[clamp(3.5rem,8vw,7rem)]">
+            <div>Discover.</div>
+            <div className="text-[#FFC900]">Build.</div>
+            <div>Lead.</div>
           </h2>
-          <p className="max-w-2xl mx-auto text-lg font-medium mt-6">
-            Every leader started as a learner. Your LHW journey is a progression — and every stage unlocks the next.
+
+          <p className="max-w-xl mx-auto mt-8 text-lg font-medium text-neutral-700 leading-relaxed">
+            Start curious. Leave as a builder.
+            <br />
+            Six days. Three stages. One community.
           </p>
         </div>
 
-        {/* Journey Steps */}
-        <div className="journey-steps flex flex-col md:flex-row items-start md:items-center gap-0 relative">
-          {steps.map((step, i) => (
-            <div key={step.label} className="flex flex-col md:flex-row items-center flex-1">
-              {/* Step card */}
-              <div className="journey-step-item flex flex-col items-center text-center flex-1">
-                {/* Stage label */}
-                <span className="nb-chip mb-4" style={{ background: step.accent }}>
-                  {step.stage}
-                </span>
+        {/* Journey */}
+        <div className="journey-grid grid md:grid-cols-3 gap-16 items-start">
 
-                {/* Icon box with mascot */}
-                <div className="w-32 h-32 nb-border nb-shadow flex items-center justify-center mb-4 relative"
-                  style={{ background: step.accent + "44" }}>
-                  <img src={step.mascot} alt={step.alt} className="w-24 h-auto float-anim" />
-                </div>
+          {steps.map((step, index) => (
+            <div
+              key={step.label}
+              className={`journey-card flex flex-col items-center text-center ${step.offset}`}
+            >
+              {/* Mascot */}
+              <img
+                src={step.mascot}
+                alt={step.alt}
+                className={`
+                  mascot
+                  ${step.imageSize}
+                  h-auto
+                  object-contain
+                  select-none
+                  pointer-events-none
+                  transition-transform
+                  duration-500
+                `}
+              />
 
-                {/* Label */}
-                <h3 className="font-display text-3xl mb-2">{step.label}</h3>
-                <p className="font-medium text-sm max-w-xs leading-relaxed opacity-80">{step.description}</p>
+              {/* Timeline Row */}
+              <div className="relative w-full flex items-center justify-center my-8">
+
+                {/* Left Line */}
+                {index > 0 && (
+                  <div className="timeline-segment hidden md:block absolute left-0 right-1/2 h-[4px] bg-black" />
+                )}
+
+                {/* Right Line */}
+                {index < steps.length - 1 && (
+                  <div className="timeline-segment hidden md:block absolute left-1/2 right-0 h-[4px] bg-black" />
+                )}
+
+                {/* Node */}
+                <div
+                  className="relative z-10 w-8 h-8 rounded-full border-4 border-black"
+                  style={{ backgroundColor: step.accent }}
+                />
               </div>
 
-              {/* Connector */}
-              {i < steps.length - 1 && (
-                <div className="journey-connector hidden md:flex items-center justify-center self-start mt-16 px-4 flex-shrink-0">
-                  <div className="flex items-center gap-1">
-                    <div className="h-[3px] w-12 bg-[var(--ink)]" />
-                    <ArrowRight size={20} />
-                  </div>
-                </div>
-              )}
+              {/* Stage */}
+              <div className="flex items-center gap-3 mb-4">
+                <div
+                  className="w-3 h-3 rounded-full border-2 border-black"
+                  style={{ backgroundColor: step.accent }}
+                />
 
-              {/* Mobile vertical connector */}
-              {i < steps.length - 1 && (
-                <div className="md:hidden flex flex-col items-center py-6">
-                  <div className="w-[3px] h-16 bg-[var(--ink)]" />
-                  <ArrowRight size={20} style={{ transform: "rotate(90deg)", margin: "-4px 0" }} />
-                  <div className="w-[3px] h-16 bg-[var(--ink)]" />
-                </div>
-              )}
+                <span className="text-xs uppercase tracking-[0.3em] font-bold text-neutral-500">
+                  {step.stage}
+                </span>
+              </div>
+
+              {/* Title */}
+              <h3
+                className={`
+                  font-display
+                  font-black
+                  tracking-[-0.04em]
+                  mb-4
+                  ${step.featured
+                    ? "text-5xl"
+                    : "text-4xl"
+                  }
+                `}
+              >
+                {step.label}
+              </h3>
+
+              {/* Description */}
+              <p className="max-w-[280px] text-neutral-700 leading-relaxed font-medium">
+                {step.description}
+              </p>
             </div>
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <div className="mt-16 text-center">
-          <a href="#join" className="nb-btn nb-btn-pink">
-            Start your journey <ArrowRight size={16} />
+        {/* CTA */}
+        <div className="mt-28 flex justify-center">
+          <a
+            href="#join"
+            className="
+              bg-[#FFC900]
+              border-4
+              border-black
+              px-10
+              py-5
+              text-lg
+              font-display
+              uppercase
+              tracking-[0.15em]
+              shadow-[6px_6px_0px_#000]
+              transition-all
+              duration-300
+              hover:-translate-y-1
+              hover:shadow-[10px_10px_0px_#000]
+            "
+          >
+            Start Your Journey
           </a>
         </div>
+
       </div>
     </section>
   );

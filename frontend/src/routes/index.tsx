@@ -116,8 +116,7 @@ function Index() {
           <a
             key={item.href}
             href={item.href}
-            className="nav-anim px-5 py-2 rounded-full text-sm font-bold text-[var(--ink)] transition-transform hover:-translate-x-2 shadow-sm border-2 border-transparent hover:border-[var(--ink)]"
-            style={{ backgroundColor: item.color }}
+            className="nav-anim flex items-center justify-center bg-[var(--ink)] text-[var(--paper)] rounded-full px-6 py-2.5 font-display text-sm uppercase tracking-widest hover:scale-105 transition-transform shadow-sm"
           >
             {item.label}
           </a>
@@ -150,8 +149,7 @@ function Index() {
               key={item.href}
               href={item.href}
               onClick={() => setMobileOpen(false)}
-              className="px-5 py-3 rounded-full text-center text-sm font-bold text-[var(--ink)] border-2 border-transparent"
-              style={{ backgroundColor: item.color }}
+              className="flex items-center justify-center bg-[var(--ink)] text-[var(--paper)] rounded-full px-6 py-2.5 font-display text-sm uppercase tracking-widest hover:scale-105 transition-transform shadow-sm"
             >
               {item.label}
             </a>

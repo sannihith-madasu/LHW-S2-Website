@@ -10,92 +10,240 @@ export function NewsletterSection() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from(".newsletter-content", {
-        y: 40, opacity: 0, duration: 0.9, ease: "power3.out",
-        scrollTrigger: { trigger: ".newsletter-content", start: "top 80%" },
+      gsap.from(".newsletter-eyebrow", {
+        y: 20,
+        opacity: 0,
+        duration: 0.6,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      });
+
+      gsap.from(".newsletter-title", {
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      });
+
+      gsap.from(".newsletter-form", {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        delay: 0.15,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      });
+
+      gsap.from(".newsletter-mascot", {
+        x: 60,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        },
+      });
+
+      gsap.to(".newsletter-mascot", {
+        y: -12,
+        duration: 2.4,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
       });
     }, sectionRef);
+
     return () => ctx.revert();
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
     if (!email || !email.includes("@")) {
       setError("Please enter a valid email address.");
       return;
     }
+
     setError("");
     setSubmitted(true);
   };
 
   return (
-    <section id="newsletter" ref={sectionRef} className="border-b-[3px] border-[var(--ink)] bg-[var(--mint)] overflow-hidden">
-      <div className="mx-auto max-w-7xl px-5 py-section">
-        <div className="newsletter-content grid md:grid-cols-2 gap-12 md:gap-20 items-center">
-          {/* Robot mascot */}
-          <div className="flex items-center justify-center order-last md:order-first">
-            <div className="relative">
-              <div className="absolute -inset-4 bg-[var(--sun)] nb-border opacity-50" />
-              <div className="relative nb-border p-8 bg-[var(--sun)] flex items-center justify-center nb-shadow">
-                <img src={mascotAi} alt="Robot mascot — stay in the loop" className="w-48 h-auto float-anim-delay" />
-              </div>
+    <section
+      id="newsletter"
+      ref={sectionRef}
+      className="bg-[var(--mint)] border-b-[3px] border-[var(--ink)] overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto px-6 py-24 md:py-32">
+
+        <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-center">
+
+          {/* Content */}
+          <div className="md:col-span-7">
+
+            <div className="newsletter-eyebrow mb-6">
+              <span className="font-mono text-xs uppercase tracking-[0.35em] font-bold">
+                JOIN THE COMMUNITY
+              </span>
             </div>
-          </div>
 
-          {/* Form */}
-          <div>
-            <span className="nb-chip mb-5">📬 Stay in the Loop</span>
-            <h2 className="font-display text-4xl md:text-5xl mb-4 leading-tight">
-              Never miss a{" "}
-              <span className="bg-[var(--paper)] px-2 nb-border inline-block">hack</span>
+            <h2 className="
+              newsletter-title
+              font-display
+              text-5xl
+              md:text-7xl
+              leading-[0.9]
+              tracking-[-0.05em]
+              mb-8
+              max-w-4xl
+            ">
+              Be there before
+              <br />
+              everyone else.
             </h2>
-            <p className="text-lg font-medium mb-8 max-w-md leading-relaxed">
-              Get notified when S2 goes live, when workshops drop, and when the community does something awesome.
-              No spam — just signal.
-            </p>
 
-            {submitted ? (
-              <div className="nb-border bg-[var(--paper)] p-6 nb-shadow flex items-center gap-4">
-                <div className="w-12 h-12 nb-border flex items-center justify-center flex-shrink-0"
-                  style={{ background: "var(--sky)" }}>
+            {!submitted ? (
+              <>
+                <form
+                  onSubmit={handleSubmit}
+                  noValidate
+                  className="newsletter-form max-w-2xl"
+                >
+                  <div className="flex flex-col sm:flex-row">
+
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                        setError("");
+                      }}
+                      placeholder="your@email.com"
+                      aria-label="Email address"
+                      className="
+                        flex-1
+                        border-[3px]
+                        border-black
+                        bg-white
+                        px-5
+                        py-4
+                        text-lg
+                        font-medium
+                        outline-none
+                        placeholder:text-neutral-400
+                      "
+                    />
+
+                    <button
+                      type="submit"
+                      className="
+                        flex
+                        items-center
+                        justify-center
+                        gap-2
+                        border-[3px]
+                        border-black
+                        sm:border-l-0
+                        bg-[#FFC900]
+                        px-8
+                        py-4
+                        font-display
+                        uppercase
+                        transition-transform
+                        hover:-translate-y-[2px]
+                      "
+                    >
+                      Join
+                      <Send size={16} />
+                    </button>
+                  </div>
+
+                  {error && (
+                    <p className="mt-3 text-sm font-semibold text-red-700">
+                      {error}
+                    </p>
+                  )}
+                </form>
+
+                <p className="mt-6 max-w-md text-neutral-700 leading-relaxed">
+                  Workshop drops. Launch announcements.
+                  Community updates. Nothing else.
+                </p>
+              </>
+            ) : (
+              <div className="
+                mt-4
+                inline-flex
+                items-center
+                gap-4
+                border-[3px]
+                border-black
+                bg-white
+                px-6
+                py-5
+              ">
+                <div className="
+                  w-12
+                  h-12
+                  border-[3px]
+                  border-black
+                  flex
+                  items-center
+                  justify-center
+                  bg-[#FFC900]
+                ">
                   <Check size={24} />
                 </div>
+
                 <div>
-                  <div className="font-display text-xl">You're in! 🎉</div>
-                  <p className="font-medium text-sm opacity-70 mt-1">We'll reach out when LHW S2 kicks off.</p>
+                  <div className="font-display text-2xl">
+                    You're in.
+                  </div>
+
+                  <p className="text-sm text-neutral-600 mt-1">
+                    We'll let you know when the next build begins.
+                  </p>
                 </div>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} noValidate>
-                <div className="flex flex-col sm:flex-row gap-0">
-                  <input
-                    id="newsletter-email"
-                    type="email"
-                    value={email}
-                    onChange={(e) => { setEmail(e.target.value); setError(""); }}
-                    placeholder="your@email.com"
-                    className="newsletter-input"
-                    aria-label="Email address"
-                  />
-                  <button type="submit" className="nb-btn nb-btn-ink flex-shrink-0 !py-0" style={{ height: 52, borderLeft: "none" }}>
-                    Subscribe <Send size={16} />
-                  </button>
-                </div>
-                {error && (
-                  <p className="mt-2 font-mono text-xs font-bold text-red-700 flex items-center gap-1">
-                    ⚠ {error}
-                  </p>
-                )}
-                <p className="mt-3 font-mono text-xs opacity-60">
-                  No spam. Unsubscribe anytime. Zero noise.
-                </p>
-              </form>
             )}
           </div>
+
+          {/* Mascot */}
+          <div className="md:col-span-5 flex justify-center md:justify-end">
+
+            <img
+              src={mascotAi}
+              alt="Robot mascot"
+              className="
+                newsletter-mascot
+                w-[280px]
+                md:w-[420px]
+                lg:w-[500px]
+                h-auto
+                object-contain
+                select-none
+                pointer-events-none
+              "
+            />
+
+          </div>
+
         </div>
       </div>
     </section>
