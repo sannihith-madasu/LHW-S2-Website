@@ -216,6 +216,14 @@ function Index() {
               <span className="font-display text-[var(--paper)] text-5xl md:text-8xl uppercase tracking-tight opacity-95">
                 Launch
               </span>
+              <span className="w-4 h-4 md:w-6 md:h-6 rounded-full bg-[var(--sky)]"></span>
+              <span className="font-display text-5xl md:text-8xl uppercase tracking-tight flex items-center gap-3 md:gap-5">
+                <span className="bg-[var(--sun)] text-[var(--ink)] px-3 md:px-5 py-1 inline-block">HACKERABAD</span>
+                <span className="text-[var(--paper)] text-3xl md:text-5xl inline-block rotate-12 font-black select-none">✕</span>
+                <span className="bg-[var(--mint)] text-[var(--ink)] px-3 md:px-5 py-1 inline-block">AIC</span>
+                <span className="text-[var(--paper)] text-3xl md:text-5xl inline-block -rotate-12 font-black select-none">✕</span>
+                <span className="bg-[var(--sky)] text-[var(--ink)] px-3 md:px-5 py-1 inline-block">ECA</span>
+              </span>
               <span className="w-4 h-4 md:w-6 md:h-6 rounded-full bg-[var(--pink)]"></span>
             </div>
           ))}
