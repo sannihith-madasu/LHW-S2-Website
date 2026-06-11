@@ -115,7 +115,7 @@ export function SponsorsSection() {
     <section
       id="sponsors"
       ref={sectionRef}
-      className="bg-[#FDFBF7] border-b-4 border-black overflow-hidden"
+      className="bg-[var(--paper)] border-b-4 border-black overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-6 py-28">
 

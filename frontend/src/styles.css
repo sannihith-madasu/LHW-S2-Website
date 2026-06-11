@@ -47,11 +47,11 @@
 :root {
   --radius: 0px;
   /* Neo-brutalism + 90s vector anime: solid pop colors, hard ink */
-  --background: oklch(0.97 0.02 95);            /* cream paper */
+  --background: #FFFAC4;                        /* warm paper */
   --foreground: oklch(0.15 0.02 270);
-  --card: oklch(1 0 0);
+  --card: #FFFAC4;
   --card-foreground: oklch(0.15 0.02 270);
-  --popover: oklch(1 0 0);
+  --popover: #FFFAC4;
   --popover-foreground: oklch(0.15 0.02 270);
   --primary: oklch(0.7 0.21 50);                /* sun orange */
   --primary-foreground: oklch(0.12 0.02 270);
@@ -68,7 +68,7 @@
   --ring: oklch(0.7 0.21 50);
 
   --ink: oklch(0.12 0.02 270);
-  --paper: oklch(0.97 0.02 95);
+  --paper: #FFFAC4;
   --sun: oklch(0.78 0.2 75);                    /* yellow */
   --sky: oklch(0.78 0.16 220);                  /* cel-blue */
   --pink: oklch(0.78 0.17 350);                 /* hot pink */
@@ -121,7 +121,7 @@
 
   .nb-card {
     border: 3px solid var(--ink);
-    background: #fff;
+    background: var(--paper);
     box-shadow: 8px 8px 0 0 var(--ink);
   }
 
@@ -158,7 +158,7 @@
   .nb-chip {
     display: inline-flex; align-items: center; gap: 0.4rem;
     border: 3px solid var(--ink);
-    background: #fff;
+    background: var(--paper);
     padding: 4px 12px;
     font-family: var(--font-mono);
     font-size: 12px;
@@ -283,7 +283,7 @@
   .content-card {
     border: 3px solid var(--ink);
     box-shadow: 6px 6px 0 0 var(--ink);
-    background: #fff;
+    background: var(--paper);
     overflow: hidden;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
     display: flex;
@@ -415,7 +415,7 @@
   .feed-card {
     border: 3px solid var(--ink);
     box-shadow: 6px 6px 0 0 var(--ink);
-    background: #fff;
+    background: var(--paper);
     padding: 1.25rem;
     flex-shrink: 0;
     width: 280px;
@@ -442,7 +442,7 @@
     min-width: 0;
   }
   .newsletter-input:focus {
-    background: #fff;
+    background: var(--paper);
     box-shadow: inset 0 0 0 2px var(--ink);
   }
 
