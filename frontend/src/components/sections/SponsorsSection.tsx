@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowUpRight } from "lucide-react";
 import catgithub from "@/assets/catgithub.png";
+import hackerabadLogo from "@/assets/Hackerabad.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -247,50 +248,110 @@ export function SponsorsSection() {
             </div>
           ))}
 
-          {/* Become a sponsor row — hidden, un-hide when ready */}
-          {false && (
-            <div className="border-t-4 border-black py-16 relative overflow-hidden">
-              <div aria-hidden="true" className="absolute inset-y-0 right-0 flex items-center pointer-events-none select-none">
-                <span className="font-display font-black text-[clamp(6rem,18vw,16rem)] leading-none tracking-[-0.06em] whitespace-nowrap" style={{ color: "rgba(0,0,0,0.04)" }}>
-                  YOUR BRAND
-                </span>
+          {/* Recruitment Poster */}
+          <div className="relative border-t-4 border-black py-24 overflow-hidden">
+            <div
+              aria-hidden
+              className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
+            >
+              <span className="font-display font-black text-[clamp(8rem,22vw,22rem)] tracking-[-0.08em] leading-none text-black/5">
+                NEXT?
+              </span>
+            </div>
+
+            <div className="relative z-10 max-w-5xl">
+              <div className="inline-block mb-6 px-4 py-2 border-2 border-black bg-[#FFC900] text-xs font-bold uppercase tracking-[0.25em]">
+                Sponsor Local Hack Week
               </div>
 
-              <div className="relative z-10 grid md:grid-cols-12 gap-10 items-center">
-                <div className="md:col-span-4">
-                  <div className="inline-block px-3 py-1 border-2 border-black text-xs font-bold uppercase tracking-[0.2em] mb-6 bg-[#FFC900]">
-                    BECOME A SPONSOR
-                  </div>
-                  <h3 className="font-display text-5xl md:text-6xl tracking-[-0.05em] leading-none text-neutral-300">
-                    Your Brand
-                  </h3>
+              <h3 className="font-display text-[clamp(3rem,8vw,7rem)] leading-[0.9] tracking-[-0.06em]">
+                Put Your Tools
+                <br />
+                In Hackers'
+                <br />
+                Hands.
+              </h3>
+
+              <p className="mt-8 max-w-2xl text-lg leading-relaxed text-neutral-700">
+                Hundreds of developers, designers, and makers will spend a full week
+                building projects, exploring new tools, and sharing their work.
+                If your product helps people create, learn, or ship faster,
+                we'd love to talk.
+              </p>
+
+              <div className="flex flex-wrap gap-4 mt-10">
+                <div className="border-2 border-black px-5 py-3">
+                  <div className="font-display text-3xl">7</div>
+                  <div className="text-xs uppercase">Days</div>
                 </div>
 
-                <div className="md:col-span-8">
-                  <p className="text-lg leading-relaxed text-neutral-500 max-w-2xl mb-8">
-                    Want to put your product in front of hundreds of builders, designers, and developers? Reach out — we'd love to have you as part of the community.
-                  </p>
+                <div className="border-2 border-black px-5 py-3">
+                  <div className="font-display text-3xl">250+</div>
+                  <div className="text-xs uppercase">Hackers</div>
+                </div>
 
-                  <a
-                    href="mailto:hello@hackerabad.com"
-                    className="
-                    inline-flex items-center gap-2
-                    border-4 border-black
-                    px-6 py-3
-                    font-display uppercase tracking-wide text-sm
+                <div className="border-2 border-black px-5 py-3">
+                  <div className="font-display text-3xl">2026</div>
+                  <div className="text-xs uppercase">Edition</div>
+                </div>
+              </div>
+              <div className="mt-12 flex flex-wrap gap-4">
+                <a
+                  href="mailto:hackclubhackerabad@gmail.com"
+                  className="
+                    inline-flex
+                    items-center
+                    gap-3
+                    border-4
+                    border-black
                     bg-[#FFC900]
-                    shadow-[4px_4px_0px_#000]
-                    transition-all duration-200
-                    hover:-translate-y-[2px] hover:shadow-[6px_6px_0px_#000]
+                    px-8
+                    py-4
+                    font-display
+                    uppercase
+                    tracking-wide
+                    shadow-[6px_6px_0px_#000]
+                    transition-all
+                    hover:-translate-y-1
+                    hover:shadow-[8px_8px_0px_#000]
                   "
-                  >
-                    Get in touch
-                    <ArrowUpRight size={18} />
-                  </a>
-                </div>
+                >
+                  Sponsor Us
+                  <ArrowUpRight size={18} />
+                </a>
+
+                <a
+                  href="#"
+                  className="
+                    inline-flex
+                    items-center
+                    gap-3
+                    border-4
+                    border-black
+                    bg-[var(--paper)]
+                    px-8
+                    py-4
+                    font-display
+                    uppercase
+                    tracking-wide
+                    shadow-[6px_6px_0px_#000]
+                    transition-all
+                    hover:-translate-y-1
+                    hover:shadow-[8px_8px_0px_#000]
+                  "
+                >
+                  Request Sponsor Deck
+                </a>
               </div>
             </div>
-          )}
+
+            <img
+              src={hackerabadLogo}
+              alt=""
+              aria-hidden
+              className="absolute right-0 bottom-0 w-[300px] opacity-[0.04] pointer-events-none select-none"
+            />
+          </div>
           <div className="border-t-4 border-black" />
         </div>
 

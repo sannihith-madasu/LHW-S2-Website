@@ -10,6 +10,7 @@ import {
   Menu,
   X,
   Zap,
+  ArrowUp,
 } from "lucide-react";
 
 // Assets
@@ -47,18 +48,25 @@ const navRight = [
 function Index() {
   const navRef = useRef<HTMLElement>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
-  // Sticky nav background
+  // Sticky nav background & Back to Top logic
   useEffect(() => {
-    const nav = navRef.current;
-    if (!nav) return;
     const onScroll = () => {
-      if (window.scrollY > 60) {
-        nav.classList.add("nav-solid");
-      } else {
-        nav.classList.remove("nav-solid");
+      const nav = navRef.current;
+      if (nav) {
+        if (window.scrollY > 60) {
+          nav.classList.add("nav-solid");
+        } else {
+          nav.classList.remove("nav-solid");
+        }
       }
+      setShowBackToTop(window.scrollY > 400);
     };
+    
+    // Initial check
+    onScroll();
+    
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -267,6 +275,17 @@ function Index() {
 
         </div>
       </footer>
+
+      {/* Floating Back to Top Button */}
+      {showBackToTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="fixed bottom-8 right-8 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[var(--ink)] text-[var(--paper)] shadow-lg transition-transform hover:-translate-y-1 hover:bg-[var(--sun)] hover:text-[var(--ink)] border-2 border-[var(--ink)] md:bottom-12 md:right-12"
+          aria-label="Back to top"
+        >
+          <ArrowUp size={24} />
+        </button>
+      )}
     </div>
   );
 }
