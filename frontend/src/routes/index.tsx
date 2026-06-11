@@ -160,7 +160,7 @@ function Index() {
               </span>
               <span className="w-4 h-4 md:w-6 md:h-6 rounded-full bg-[var(--mint)]"></span>
               <span className="font-display text-[var(--paper)] text-5xl md:text-8xl uppercase tracking-tight opacity-95">
-                Launch
+                Lead
               </span>
               <span className="w-4 h-4 md:w-6 md:h-6 rounded-full bg-[var(--sky)]"></span>
               <span className="font-display text-5xl md:text-8xl uppercase tracking-tight flex items-center gap-3 md:gap-5">
