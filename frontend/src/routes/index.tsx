@@ -99,10 +99,10 @@ function Index() {
 
       <nav className="hidden md:flex fixed top-[82px] right-8 z-50 flex-col items-end gap-2.5">
         {[
-          { href: "#characters", label: "About", color: "var(--mint)" },
-          { href: "#feature-explore", label: "Explore", color: "var(--sky)" },
-          { href: "#join", label: "Register", color: "var(--sun)" },
-          { href: "#contact", label: "Contact Us", color: "var(--pink)" },
+          { href: "#characters", label: "About" },
+          { href: "#journey", label: "Explore" },
+          { href: "#join", label: "Register" },
+          { href: "#newsletter", label: "Contact Us" },
         ].map((item, i) => (
           <a
             key={item.href}
@@ -112,6 +112,12 @@ function Index() {
             {item.label}
           </a>
         ))}
+        <a
+          href="/faq"
+          className="nav-anim flex items-center justify-center bg-[var(--ink)] text-[var(--paper)] rounded-full px-6 py-2.5 font-display text-sm uppercase tracking-widest hover:scale-105 transition-transform shadow-sm"
+        >
+          FAQs
+        </a>
       </nav>
 
       {/* Mobile Navigation */}
@@ -131,10 +137,10 @@ function Index() {
       {mobileOpen && (
         <div className="md:hidden fixed top-[72px] left-0 w-full z-40 bg-[var(--paper)] border-b-2 border-[var(--ink)] shadow-xl flex flex-col p-4 gap-3">
           {[
-            { href: "#characters", label: "About", color: "var(--mint)" },
-            { href: "#feature-explore", label: "Explore", color: "var(--sky)" },
-            { href: "#join", label: "Register", color: "var(--sun)" },
-            { href: "#contact", label: "Contact Us", color: "var(--pink)" },
+            { href: "#characters", label: "About" },
+            { href: "#journey", label: "Explore" },
+            { href: "#join", label: "Register" },
+            { href: "#newsletter", label: "Contact Us" },
           ].map((item) => (
             <a
               key={item.href}
@@ -145,6 +151,13 @@ function Index() {
               {item.label}
             </a>
           ))}
+          <a
+            href="/faq"
+            onClick={() => setMobileOpen(false)}
+            className="flex items-center justify-center bg-[var(--ink)] text-[var(--paper)] rounded-full px-6 py-2.5 font-display text-sm uppercase tracking-widest hover:scale-105 transition-transform shadow-sm"
+          >
+            FAQs
+          </a>
         </div>
       )}
 

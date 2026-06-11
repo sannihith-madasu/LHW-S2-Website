@@ -107,6 +107,7 @@ export function CommunityJourney() {
 
   return (
     <section
+      id="journey"
       ref={sectionRef}
       className="bg-[#FDFBF7] border-b-4 border-black py-28 overflow-hidden text-black"
     >
