@@ -92,7 +92,7 @@ export function HeroSection() {
                 href="#join"
                 className="inline-flex items-center gap-2 bg-[var(--ink)] text-[var(--paper)] rounded-full px-7 h-12 font-bold text-sm uppercase tracking-wider hover:bg-[var(--sun)] hover:text-[var(--ink)] transition-colors w-fit shadow-md"
               >
-                Join the Movement <ArrowRight size={16} />
+                Count Me In <ArrowRight size={16} />
               </a>
             </div>
           </div>
