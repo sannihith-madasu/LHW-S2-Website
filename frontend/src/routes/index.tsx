@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -112,12 +112,12 @@ function Index() {
             {item.label}
           </a>
         ))}
-        <a
-          href="/faq"
+        <Link
+          to="/faq"
           className="nav-anim flex items-center justify-center bg-[var(--ink)] text-[var(--paper)] rounded-full px-6 py-2.5 font-display text-sm uppercase tracking-widest hover:scale-105 transition-transform shadow-sm"
         >
           FAQs
-        </a>
+        </Link>
       </nav>
 
       {/* Mobile Navigation */}
@@ -151,13 +151,13 @@ function Index() {
               {item.label}
             </a>
           ))}
-          <a
-            href="/faq"
+          <Link
+            to="/faq"
             onClick={() => setMobileOpen(false)}
             className="flex items-center justify-center bg-[var(--ink)] text-[var(--paper)] rounded-full px-6 py-2.5 font-display text-sm uppercase tracking-widest hover:scale-105 transition-transform shadow-sm"
           >
             FAQs
-          </a>
+          </Link>
         </div>
       )}
 

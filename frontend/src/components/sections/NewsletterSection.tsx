@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Send, Check } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import mascotAi from "@/assets/mascot-ai.png";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -254,8 +255,8 @@ export function NewsletterSection() {
 
             {/* Volunteer & Contact Cards */}
             <div className="mt-12 grid md:grid-cols-2 gap-6 max-w-2xl">
-              <a
-                href="/volunteer"
+              <Link
+                to="/volunteer"
                 className="
                   group
                   border-[3px]
@@ -285,7 +286,7 @@ export function NewsletterSection() {
                   Apply Now
                   <Send size={14} />
                 </div>
-              </a>
+              </Link>
 
               <a
                 href="mailto:hello@hackerabad.com"
