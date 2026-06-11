@@ -88,20 +88,50 @@ export function NewsletterSection() {
     <section
       id="newsletter"
       ref={sectionRef}
-      className="bg-[var(--mint)] border-b-[3px] border-[var(--ink)] overflow-hidden"
+      className="relative bg-[var(--mint)] border-b-[3px] border-[var(--ink)] overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-6 py-24 md:py-32">
+      {/* Background Watermark */}
+      <div
+        aria-hidden
+        className="
+          absolute
+          inset-0
+          flex
+          items-center
+          justify-center
+          pointer-events-none
+          select-none
+        "
+      >
+        <span
+          className="
+            font-display
+            font-black
+            text-[18vw]
+            leading-none
+            text-black/[0.03]
+            tracking-[-0.08em]
+          "
+        >
+          JOIN
+        </span>
+      </div>
 
-        <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-16 md:py-24">
+
+        <div className="grid lg:grid-cols-[1fr_420px] gap-16 lg:gap-20 items-center">
 
           {/* Content */}
-          <div className="md:col-span-7">
+          <div>
 
             <div className="newsletter-eyebrow mb-6">
               <span className="font-mono text-xs uppercase tracking-[0.35em] font-bold">
                 JOIN THE COMMUNITY
               </span>
             </div>
+
+
+
 
             <h2 className="
               newsletter-title
@@ -182,8 +212,7 @@ export function NewsletterSection() {
                 </form>
 
                 <p className="mt-6 max-w-md text-neutral-700 leading-relaxed">
-                  Workshop drops. Launch announcements.
-                  Community updates. Nothing else.
+                  Registrations. Workshop schedules. Project showcases. Community updates. One email at a time.
                 </p>
               </>
             ) : (
@@ -222,26 +251,94 @@ export function NewsletterSection() {
                 </div>
               </div>
             )}
+
+            {/* Volunteer & Contact Cards */}
+            <div className="mt-12 grid md:grid-cols-2 gap-6 max-w-2xl">
+              <a
+                href="/volunteer"
+                className="
+                  group
+                  border-[3px]
+                  border-black
+                  bg-white
+                  p-6
+                  transition-all
+                  hover:-translate-y-1
+                "
+              >
+                <div className="text-xs font-mono uppercase tracking-[0.25em] mb-3">
+                  Volunteer
+                </div>
+
+                <h3 className="font-display text-3xl leading-none mb-4">
+                  Help Run
+                  <br />
+                  The Week
+                </h3>
+
+                <p className="text-neutral-700 text-sm leading-relaxed mb-6">
+                  Support workshops, manage participants,
+                  coordinate sessions and help shape the experience.
+                </p>
+
+                <div className="flex items-center gap-2 font-bold uppercase text-sm">
+                  Apply Now
+                  <Send size={14} />
+                </div>
+              </a>
+
+              <a
+                href="mailto:hello@hackerabad.com"
+                className="
+                  group
+                  border-[3px]
+                  border-black
+                  bg-[#FFC900]
+                  p-6
+                  transition-all
+                  hover:-translate-y-1
+                "
+              >
+                <div className="text-xs font-mono uppercase tracking-[0.25em] mb-3">
+                  Contact
+                </div>
+
+                <h3 className="font-display text-3xl leading-none mb-4">
+                  Questions?
+                  <br />
+                  Let's Talk.
+                </h3>
+
+                <p className="text-sm leading-relaxed mb-6">
+                  Sponsorships, partnerships, speaking opportunities,
+                  community support or anything else.
+                </p>
+
+                <div className="flex items-center gap-2 font-bold uppercase text-sm">
+                  Contact Us
+                  <Send size={14} />
+                </div>
+              </a>
+            </div>
+
           </div>
 
           {/* Mascot */}
-          <div className="md:col-span-5 flex justify-center md:justify-end">
-
+          <div className="flex justify-center lg:justify-end">
             <img
               src={mascotAi}
               alt="Robot mascot"
               className="
                 newsletter-mascot
-                w-[280px]
-                md:w-[420px]
-                lg:w-[500px]
+                w-[240px]
+                md:w-[320px]
+                lg:w-[420px]
                 h-auto
                 object-contain
                 select-none
                 pointer-events-none
               "
             />
-
           </div>
 
         </div>

@@ -327,7 +327,12 @@ export function SponsorsSection() {
                     items-center
                     gap-3
                     border-4
-                    border-black
+                    border-blackERABAD
+✕
+AIC
+✕
+ECA
+
                     bg-[var(--paper)]
                     px-8
                     py-4
@@ -340,7 +345,7 @@ export function SponsorsSection() {
                     hover:shadow-[8px_8px_0px_#000]
                   "
                 >
-                  Request Sponsor Deck
+                  View Sponsor Deck
                 </a>
               </div>
             </div>
