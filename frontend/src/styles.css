@@ -47,11 +47,11 @@
 :root {
   --radius: 0px;
   /* Neo-brutalism + 90s vector anime: solid pop colors, hard ink */
-  --background: #FFFAC4;                        /* warm paper */
+  --background: #FFFAE3;                        /* warm paper */
   --foreground: oklch(0.15 0.02 270);
-  --card: #FFFAC4;
+  --card: #FFFAE3;
   --card-foreground: oklch(0.15 0.02 270);
-  --popover: #FFFAC4;
+  --popover: #FFFAE3;
   --popover-foreground: oklch(0.15 0.02 270);
   --primary: oklch(0.7 0.21 50);                /* sun orange */
   --primary-foreground: oklch(0.12 0.02 270);
@@ -68,7 +68,7 @@
   --ring: oklch(0.7 0.21 50);
 
   --ink: oklch(0.12 0.02 270);
-  --paper: #FFFAC4;
+  --paper: #FFFAE3;
   --sun: oklch(0.78 0.2 75);                    /* yellow */
   --sky: oklch(0.78 0.16 220);                  /* cel-blue */
   --pink: oklch(0.78 0.17 350);                 /* hot pink */
