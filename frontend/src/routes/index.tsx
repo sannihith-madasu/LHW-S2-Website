@@ -93,8 +93,8 @@ function Index() {
         {[
           { href: "#characters", label: "About", color: "var(--mint)" },
           { href: "#feature-explore", label: "Explore", color: "var(--sky)" },
-          { href: "#resources", label: "Resources", color: "var(--pink)" },
           { href: "#join", label: "Register", color: "var(--sun)" },
+          { href: "#contact", label: "Contact Us", color: "var(--pink)" },
         ].map((item, i) => (
           <a
             key={item.href}
@@ -125,8 +125,8 @@ function Index() {
           {[
             { href: "#characters", label: "About", color: "var(--mint)" },
             { href: "#feature-explore", label: "Explore", color: "var(--sky)" },
-            { href: "#resources", label: "Resources", color: "var(--pink)" },
             { href: "#join", label: "Register", color: "var(--sun)" },
+            { href: "#contact", label: "Contact Us", color: "var(--pink)" },
           ].map((item) => (
             <a
               key={item.href}
@@ -189,98 +189,79 @@ function Index() {
       <NewsletterSection />
 
       {/* ═══ FOOTER ═══ */}
-      <footer
-        className="
-          bg-[var(--ink)]
-          text-[var(--paper)]
-          border-t-4
-          border-black
-          overflow-hidden
-        "
-      >
-        {/* CSS Wave Decorative Strip */}
-        <div
-          className="w-full border-b-2 border-white/10"
-          aria-hidden="true"
-        />
+      <footer className="bg-[var(--ink)] text-[var(--paper)] border-t-4 border-black overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 pt-8 pb-10">
 
-        <div className="max-w-7xl mx-auto px-6 py-12">
-
-          {/* Small top message */}
+          {/* ── Top: Register link (top-right) ── */}
           <div className="flex justify-end mb-10">
-            <p
-              className="
-                max-w-lg
-                text-right
-                text-sm
-                md:text-base
-                font-medium
-                leading-relaxed
-                text-neutral-400
-              "
+            <a
+              href="#join"
+              className="text-[11px] uppercase tracking-[0.3em] opacity-60 hover:opacity-100 hover:text-[#FFC900] transition-all"
             >
-              Six days of learning, building, shipping and meeting
-              incredible people. One week can change everything.
-            </p>
+              Register ↗
+            </a>
           </div>
 
-          {/* Massive Wordmark */}
-          <div className="mb-8">
-            <img
-              src={logoWordmark}
-              alt="Local Hack Week"
-              className="
-                w-full
-                max-w-[850px]
-                h-auto
-                object-contain
-                opacity-90
-              "
-            />
+          {/* ── Hero Grid: Left content + Right Map ── */}
+          <div className="grid md:grid-cols-[1fr_auto] gap-12 md:gap-16 items-start mb-12">
+
+            {/* Left Column */}
+            <div className="flex flex-col gap-7 max-w-xl">
+              {/* Wordmark */}
+              <img
+                src={logoWordmark}
+                alt="Local Hack Week"
+                className="w-full max-w-[600px] h-auto object-contain opacity-90"
+              />
+
+              {/* Description */}
+              <p className="text-sm md:text-base font-medium leading-relaxed text-neutral-400 max-w-sm">
+                Six days of learning, building, shipping and meeting
+                incredible people. One week can change everything.
+              </p>
+
+              {/* CTA Button */}
+              <a
+                href="https://www.youtube.com/"
+                className="inline-flex items-center justify-center bg-[#FF0000] text-white font-display uppercase tracking-wider px-8 py-4 text-sm hover:-translate-y-[2px] transition-transform w-full max-w-sm"
+              >
+                Youtube Link →
+              </a>
+            </div>
+
+            {/* Right Column: Map */}
+            <div
+              className="w-full md:w-[380px] lg:w-[440px] flex-shrink-0 rounded-lg overflow-hidden border-2 border-white/10"
+              style={{ height: "280px" }}
+            >
+              <iframe
+                title="SNIST Location"
+                src="https://maps.google.com/maps?width=440&height=280&hl=en&q=Sreenidhi+Institute+Of+Science+and+Technology&t=&z=14&ie=UTF8&iwloc=B&output=embed"
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                scrolling="no"
+                style={{ border: 0, display: "block" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
           </div>
 
-          {/* Bottom utility row */}
-          <div
-            className="
-              flex
-              items-center
-              justify-between
-              border-t-2
-              border-white/10
-              pt-6
-            "
-          >
-            <span
-              className="
-                text-[11px]
-                uppercase
-                tracking-[0.25em]
-                opacity-50
-              "
-            >
+          {/* ── Divider ── */}
+          <div className="border-t-2 border-white/10 mb-6" />
+
+          {/* ── Footer Bottom: Copyright + Nav ── */}
+          <div className="flex items-center justify-between">
+            <span className="text-[11px] uppercase tracking-[0.25em] opacity-50">
               Local Hack Week © 2026
             </span>
 
-            <div
-              className="
-                flex
-                items-center
-                gap-5
-                text-sm
-                font-medium
-              "
-            >
-              <a href="#schedule" className="hover:text-[#FFC900] transition-colors">
-                Schedule
-              </a>
-
-              <a href="#sponsors" className="hover:text-[#FFC900] transition-colors">
-                Sponsors
-              </a>
-
-              <a href="#join" className="hover:text-[#FFC900] transition-colors">
-                Register
-              </a>
+            <div className="flex items-center gap-5 text-sm font-medium">
+              <a href="#schedule" className="hover:text-[#FFC900] transition-colors">Schedule</a>
+              <a href="#sponsors" className="hover:text-[#FFC900] transition-colors">Sponsors</a>
+              <a href="#join" className="hover:text-[#FFC900] transition-colors">Register</a>
             </div>
           </div>
 
