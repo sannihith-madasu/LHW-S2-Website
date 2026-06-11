@@ -107,7 +107,7 @@ export function HeroSection() {
           <img
             src={aic}
             alt="AI Club"
-            className="absolute top-4 left-1/2 -translate-x-1/2 w-44 object-contain"
+            className="absolute -top-40 left-1/2 -translate-x-1/2 w-[300px] md:w-[500px] h-auto object-contain"
             style={{ opacity: 0.09, filter: "grayscale(1)" }}
           />
 
@@ -115,7 +115,7 @@ export function HeroSection() {
           <img
             src={eca}
             alt="ECA"
-            className="absolute bottom-16 left-4 w-40 object-contain"
+            className="absolute bottom-16 left-20 w-56 object-contain"
             style={{ opacity: 0.09, filter: "grayscale(1)" }}
           />
 
@@ -138,7 +138,7 @@ export function HeroSection() {
               </p>
               <div className="mt-4 w-16 h-[3px] bg-[var(--ink)] mx-auto opacity-20" />
               <p className="font-mono uppercase tracking-[0.2em] text-[var(--ink)] text-xs mt-3 opacity-40">
-                Hyderabad, India
+                SNIST,Hyderabad, India
               </p>
             </div>
           </div>
